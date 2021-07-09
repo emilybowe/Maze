@@ -337,13 +337,13 @@ internal class GameTest {
 
     @Test
     fun checkGoalStateTest() {
-        goalX = 5
-        goalY = 5
+        goalX = 2
+        goalY = 2
         val paths = ArrayList<PathGen>()
         matrixDefault = 1
         val game = Game(mazeSize, matrixDefault, entryX, entryY, goalX, goalY, paths, "DFS")
-        game.locationX = 5
-        game.locationY = 5
+        game.locationX = 2
+        game.locationY = 2
         assertTrue(game.checkGoalState())
     }
 
