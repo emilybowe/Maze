@@ -1,13 +1,22 @@
 import kotlin.collections.ArrayDeque
 
+class Game(
+	matrixValue: Int,
+	matrixDefault:Int,
+	val entryX: Int,
+	val entryY: Int,
+	val goalX: Int,
+	val goalY: Int, paths: List<PathGen>,
+	algorithmToUse: String,
+	renderer : Maze.Renderer = Maze.defaultRenderer(),
+) {
 //TODO - why can't I pass in the algo property and inject? Better ways?
 //TODO - investigate BFS
 
-class Game(matrixValue: Int, matrixDefault:Int, val entryX: Int, val entryY: Int,
-		   val goalX: Int, val goalY: Int, paths: List<PathGen>, algorithmToUse: String) {
+	val maze = Maze(matrixValue, matrixDefault, entryX, entryY, goalX, goalY, paths, renderer)
 	val algorithm: String = algorithmToUse
-	val maze = Maze(matrixValue, matrixDefault, entryX, entryY, goalX, goalY, paths)
 	val deque = ArrayDeque<Pair<Int, Int>>()
+
 	val alreadyVisited = ArrayDeque<Pair<Int, Int>>()
 	var locationX : Int = entryX
 	var locationY : Int = entryX
